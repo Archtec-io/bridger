@@ -25,11 +25,11 @@ end
 
 if minetest.settings:get_bool("bridger_enable_trusses", true) then
 	local bridge_colors = {
-		{"Green", "green"},
-		{"Red", "red"},
+		--{"Green", "green"},
+		--{"Red", "red"},
 		{"Steel", "steel"},
-		{"White", "white"},
-		{"Yellow", "yellow"},
+		--{"White", "white"},
+		--{"Yellow", "yellow"},
 	}
 
 	for _, row in ipairs(bridge_colors) do
