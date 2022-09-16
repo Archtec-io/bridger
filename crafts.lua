@@ -40,8 +40,10 @@ if minetest.settings:get_bool("bridger_enable_trusses", true) then
 	})
 
 	minetest.register_craft({
-		output = "bridger:bridges_steel_rod 3",
+		output = "bridger:bridges_steel_rod 9",
 		recipe = {
+			{"default:steel_ingot"},
+			{"default:steel_ingot"},
 			{"default:steel_ingot"},
 		}
 	})
