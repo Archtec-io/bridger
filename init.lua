@@ -14,6 +14,3 @@ minetest.register_node("bridger:scaffolding", {
 dofile(minetest.get_modpath("bridger") .. "/nodes.lua")
 dofile(minetest.get_modpath("bridger") .. "/crafts.lua")
 
-if minetest.settings:get_bool("Bridger_enable_alias") then
-	dofile(minetest.get_modpath("bridger") .. "/alias.lua")
-end

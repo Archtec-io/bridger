@@ -9,7 +9,5 @@ read_globals = {
 	
 	-- Mod Deps
 	"default",
-	"stairsplus",
-	"stairs",
 	"mesecon",
 }
