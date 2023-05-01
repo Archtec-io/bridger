@@ -63,12 +63,18 @@ local bridge_colors = {
 
 for c in ipairs(bridge_colors) do
 	local bridge_color = bridge_colors[c]
+	local dye
+	if bridge_color == "white" then
+		dye = "dye:white"
+	else
+		dye = "dye:dark_grey"
+	end
 
 	minetest.register_craft({
 		output = "bridger:truss_superstructure_mid_" .. bridge_color,
 		recipe = {
 			{"bridger:bridges_steel_rod", "bridger:bridges_diagonal_steel_rod", "bridger:bridges_steel_rod"},
-			{"bridger:bridges_diagonal_steel_rod", "bridger:bridges_diagonal_steel_rod", "bridger:bridges_diagonal_steel_rod"},
+			{"bridger:bridges_diagonal_steel_rod", dye, "bridger:bridges_diagonal_steel_rod"},
 			{"bridger:bridges_steel_rod", "bridger:bridges_diagonal_steel_rod", "bridger:bridges_steel_rod"},
 		}
 	})
@@ -82,9 +88,10 @@ for c in ipairs(bridge_colors) do
 	})
 
 	minetest.register_craft({
-		output = "bridger:small_support_white",
+		output = "bridger:small_support_" .. bridge_color,
 		recipe = {
 			{"bridger:bridges_steel_rod", "bridger:bridges_diagonal_steel_rod", "bridger:bridges_steel_rod"},
+			{"", dye, ""},
 		}
 	})
 
@@ -97,45 +104,20 @@ for c in ipairs(bridge_colors) do
 	})
 
 	minetest.register_craft({
-		output = "bridger:medium_support_white",
+		output = "bridger:medium_support_" .. bridge_color,
 		recipe = {
-			{"bridger:bridges_diagonal_steel_rod", "", ""},
+			{"bridger:bridges_diagonal_steel_rod", dye, ""},
 			{"bridger:bridges_steel_rod", "bridger:bridges_diagonal_steel_rod", "bridger:bridges_steel_rod"},
 		}
 	})
 
 	minetest.register_craft({
-		output = "bridger:large_support_white",
+		output = "bridger:large_support_" .. bridge_color,
 		recipe = {
-			{"bridger:bridges_diagonal_steel_rod", "", ""},
+			{"bridger:bridges_diagonal_steel_rod", dye, ""},
 			{"bridger:bridges_steel_rod", "bridger:bridges_diagonal_steel_rod", "bridger:bridges_steel_rod"},
 			{"", "", "bridger:bridges_diagonal_steel_rod"},
 		}
-	})
-end
-
-local bridge_nodes = {
-	"truss_superstructure_mid_",
-	"truss_superstructure_tall_mid_",
-	"small_support_",
-	"small_support_top",
-	"medium_support_",
-	"large_support_",
-}
-
-for c in ipairs(bridge_nodes) do
-	local bridge_node = bridge_nodes[c]
-
-	minetest.register_craft({
-		output = "bridger:" .. bridge_node .. "white",
-		type = "shapeless",
-		recipe = {"bridger:" .. bridge_node .. "steel", "dye:white"},
-	})
-
-	minetest.register_craft({
-		output = "bridger:" .. bridge_node .. "steel",
-		type = "shapeless",
-		recipe = {"bridger:" .. bridge_node .. "white", "dye:dark_grey"},
 	})
 end
 
